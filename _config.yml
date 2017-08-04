@@ -53,10 +53,9 @@ email: nilslennartbraun@gmail.com
 authors:
     nils:
         name: Nils Braun
-        bio: Your bio goes here
+        bio: high energy data scientist
         external-image: false
         picture: assets/images/profile.jpg
-        twitter: johndoe
 
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
