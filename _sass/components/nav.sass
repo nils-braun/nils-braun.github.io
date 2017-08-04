@@ -14,6 +14,7 @@
             font-size: 1.4rem
             padding: 20px 10px
             text-decoration: none
+            color: $alpha
 
 .nav
     position: absolute
@@ -26,6 +27,10 @@
         > .item > .link
             font-size: 1.4rem
             padding: 20px 10px
+
+        > .selected > .link
+            color: $beta
+            font-weight: bold
 
 .nav-home
     margin-top: 40px
@@ -43,4 +48,7 @@
             width: 70px
 
             &:hover
-                color: $alpha
+                color: $beta
+
+        > .selected
+            display: none
