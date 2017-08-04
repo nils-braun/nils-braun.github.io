@@ -2,45 +2,37 @@
 title: About
 layout: page
 ---
-![Profile Image]({{ site.url }}/{{ site.picture }})
+![Profile Image]({{ site.url }}/assets/images/me-large.jpg)
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+I am a PhD student in physics with a large passion for software 
+development in python and C++. During my daily work with large 
+amounts of data and my time as a data science engineer 
+with Blue Yonder I made contact with lots of machine
+learning techniques and data science methods.
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+My PhD thesis covers important parts of the 
+software, that will be used to reconstruct billions of 
+recorded particle collisions at [Belle II](https://www.belle2.org/),
+a large high energy particle physics experiment located in 
+Tsukuba, Japan. The whole Belle II collaboration has more 
+than 600 members from more than 30 countries, which makes
+the work very interesting!
 
-<h2>Skills</h2>
+I am developing fast and reliable algorithms, which decide
+what fraction of the recorded data should be stored and what
+is discarded - because we record a lot more data than we 
+can store in time. Also, I am writing pieces of the
+reconstruction algorithms itself.
 
-<ul class="skill-list">
-	<li>HTML - Jade - Haml - Erb</li>
-	<li>Responsive (Mobile First)</li>
-	<li>CSS (Stylus, Sass, Less)</li>
-	<li>Css Frameworks (Bootstrap, Foundation)</li>
-	<li>Javascript (Design Patterns, Testes)</li>
-	<li>NodeJS</li>
-	<li>AngularJS - ReactJS</li>
-	<li>Grunt - Gulp - Yeoman</li>
-	<li>Git</li>
-	<li>PHP</li>
-	<li>Python</li>
-	<li>MySQL - MongoDB</li>
-	<li>Scrum and Kanban</li>
-	<li>TDD e Continuous Integration</li>
-</ul>
+As part of my work at our institute in [Karlsruhe](http://www.etp.kit.edu/)
+I was also core admin of our local infrastructure and gained
+valuable insights into resource orchestration using ansible 
+and docker, as well as storage and batch technologies.
 
-<h2>Projects</h2>
+Additional to the things I do in my PhD thesis, 
+I am very much interested in Python and data science done 
+with Python. My work as a Data Science Engineer at Blue 
+Yonder boosted this dedication even more. 
 
-<ul>
-	<li><a href="https://github.com/">Lorem Lorem</a></li>
-	<li><a href="https://github.com/">Ipsum Dolor</a></li>
-	<li><a href="https://github.com/">Dolor Lorem</a></li>
-</ul>
+In my free time, I am playing the guitar or update myself 
+on the newest geek stuff.
