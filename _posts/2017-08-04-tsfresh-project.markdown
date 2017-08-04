@@ -1,7 +1,7 @@
 ---
 title: "tsfresh - extract time series features with ease"
 layout: post
-date: 2016-01-23 22:10
+date: 2017-08-04 23:00
 tag: [tsfresh, datascience, python]
 image: https://github.com/blue-yonder/tsfresh/raw/master/docs/images/introduction_ts_exa_features.png
 headerImage: true
