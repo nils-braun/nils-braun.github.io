@@ -31,8 +31,8 @@ and docker, as well as storage and batch technologies.
 
 Additional to the things I do in my PhD thesis, 
 I am very much interested in Python and data science done 
-with Python. My work as a Data Science Engineer at Blue 
-Yonder boosted this dedication even more. 
+with Python. My work as a Data Science Engineer at [Blue 
+Yonder](https://www.blue-yonder.com/de) boosted this dedication even more. 
 
 In my free time, I am playing the guitar or update myself 
 on the newest geek stuff.
