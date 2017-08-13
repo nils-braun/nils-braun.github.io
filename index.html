@@ -4,6 +4,16 @@ title: Home
 ---
 
 <section class="list">
+    <h1>Posts</h1>
+    {% for post in site.posts limit:2 %}
+        {% if post.projects %}
+        {% else %}
+            {% include blog-post.html %}
+        {% endif %}
+    {% endfor %}
+</section>
+
+<section class="list">
     <h1>Projects</h1>
     {% for post in site.posts %}
         {% if post.projects %}
@@ -13,16 +23,6 @@ title: Home
                     <h3 class="title">{{ post.title }}</h3>
                 </a>
             </div>
-        {% endif %}
-    {% endfor %}
-</section>
-
-<section class="list">
-    <h1>Posts</h1>
-    {% for post in site.posts %}
-        {% if post.projects %}
-        {% else %}
-            {% include blog-post.html %}
         {% endif %}
     {% endfor %}
 </section>
