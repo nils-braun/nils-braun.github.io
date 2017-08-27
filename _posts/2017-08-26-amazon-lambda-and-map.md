@@ -26,6 +26,7 @@ start with developing. However, because there is plenty of things you can do wit
 to get lost. Here, `zappa` comes into the game.
 
 You can find the code of this series on my [github account](https://github.com/nils-braun/amazon-lambda-datascience) (will be updated when we go on).
+The version of this post is stored in tag *part-two*.
 
 ## How can zappa help?
 There have emerged quite some projects around Amazon Lambda in the recent time - which help setting up Lambdas even easier.
