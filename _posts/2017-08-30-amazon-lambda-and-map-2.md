@@ -3,8 +3,8 @@ title: "Lambda III: Data Science with Amazon Lambda"
 layout: post
 date: 2017-09-02 20:00
 tag: [datascience, python, lambda]
-image: /assets/images/markdown.jpg
-headerImage: false
+image: /assets/images/lambda.png
+headerImage: true
 projects: false
 hidden: false
 description: "Amazon Lambda and pythons `map` together with zappa"
