@@ -1,5 +1,5 @@
 ---
-title: "Simple map framework for Amazon Lambda using zappa"
+title: "Lambda II: Simple map framework for Amazon Lambda using zappa"
 layout: post
 date: 2017-08-26 15:00
 tag: [datascience, python, lambda]
@@ -100,6 +100,7 @@ Let's start by installing `flask` and `zappa` into our virtual environment:
 
     pip install zappa flask
 
+
 The project structure will be as following:
 
     amazon-lambda-datascience
@@ -120,18 +121,22 @@ You do not have to create the files now - we will do so when we go on.
 We start with a very simple setup. The basic building block in `flask` is an application, which we will call
 `app`. To create it only once, we define in it in the `__init__.py`:
 
-    from flask import Flask
-    app = Flask(__name__)
+{% highlight python %}
+from flask import Flask
+app = Flask(__name__)
+{% endhighlight %}
 
 Then, we use this application and run it in our `main.py`
 
-    from amazon_lambda_datascience import app
+{% highlight python %}
+from amazon_lambda_datascience import app
 
-    def main():
-        app.run(debug=True)
+def main():
+    app.run(debug=True)
 
-    if __name__ == '__main__':
-        main()
+if __name__ == '__main__':
+    main()
+{% endhighlight %}
 
 You can now already try out your first flask application by running
 
@@ -149,23 +154,27 @@ We will basically just need one single website, where the user uploads the data 
 result, so we can add it as top-level. Let's create a function to add this route to our app in the
 `amazon_lambda_datascience/app.py`:
 
-    def add_routes(app):
-        """Add all routes to the application"""
-        @app.route('/', methods=['GET'])
-        def main():
-            """
-            Main method: calculate the features of the given csv dataframe.
-            """
-            return "Nothing to see here!"
+{% highlight python %}
+def add_routes(app):
+    """Add all routes to the application"""
+    @app.route('/', methods=['GET'])
+    def main():
+        """
+        Main method: calculate the features of the given csv dataframe.
+        """
+        return "Nothing to see here!"
+{% endhighlight %}
 
 and call it in the `__init__.py`:
 
-    from flask import Flask
+{% highlight python %}
+from flask import Flask
 
-    from amazon_lambda_datascience.app import add_routes
+from amazon_lambda_datascience.app import add_routes
 
-    app = Flask(__name__)
-    add_routes(app)
+app = Flask(__name__)
+add_routes(app)
+{% endhighlight %}
 
 Now, you have already a first website, you can visit on `localhost:5000`, when running `python main.py`!
 
@@ -188,7 +197,9 @@ as told by `zappa` to upload your project into Amazon AWS.
 
 If you are using python 2.7 from the debian repository, chances are very high you are running into an error here:
 
-    SSLError: HTTPSConnectionPool(host='<cour URL>', port=443): Max retries exceeded with url: /dev (Caused by SSLError(SSLError(1, '_ssl.c:510: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure'),))
+    SSLError: HTTPSConnectionPool(host='<cour URL>', port=443):
+    Max retries exceeded with url: /dev (Caused by SSLError(SSLError(1, '_ssl.c:510: error:14077410:SSL
+    routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure'),))
 
 The reason for this is, that `zappa` wants to test if your application is running and needs to do an HTTPS request for this. However, the python 2.7 in the
 debian repository has no support for SSL - so this fails. Do not worry! Everything else worked like a charm and your application
