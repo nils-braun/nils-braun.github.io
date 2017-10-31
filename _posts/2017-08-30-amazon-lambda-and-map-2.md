@@ -12,7 +12,7 @@ category: 'blog'
 author: nils
 externalLink: false
 ---
-After we have done the basic setup in the [last post](https://nils-braun.github.io/amazpn-lambda-and-map/)
+After we have done the basic setup in the [last post](https://nils-braun.github.io/amazon-lambda-and-map/)
 we are now ready to add some real data science application and fully use the parallelisation
 of Lambda. We will write a very simple map-framework for this.
 
@@ -294,7 +294,7 @@ passes the test data (stored in `data.csv` on disk) to our web service and write
 from __future__ import print_function
 import requests
 import pandas as pd
-from io import BytesIO
+from io import BytesIO, StringIO
 from time import time
 
 if __name__ == '__main__':
