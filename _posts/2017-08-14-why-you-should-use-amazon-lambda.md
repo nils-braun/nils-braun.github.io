@@ -18,7 +18,12 @@ Lambda and why it will help you develop data science applications quickly.
 
 This is part one on my series on Amazon Lambda for Data Science.
 To see how this all comes together, we will develop a real-world data science applications
-in this blog post series over the next time. 
+in this blog post series over the next time.
+
+* [Introduction: Why you should use Amazon Lambda](../why-you-should-use-amazon-lambda)
+* [Part 2: Simple map framework for Amazon Lambda using zappa](../amazon-lambda-and-map/)
+* [Part 3: Data Science with Amazon Lambda](../amazon-lambda-and-map-2/)
+* [Part 4: Use the Power of Lambda](../amazon-lambda-and-map-3/)
 
 ## What is Amazon Lambda?
 Never heard of Amazon Lambda? [Amazon Lambda][1] is part of Amazon's large cloud computing platform and in my

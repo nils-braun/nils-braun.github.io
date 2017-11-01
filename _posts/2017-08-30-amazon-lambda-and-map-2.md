@@ -12,13 +12,18 @@ category: 'blog'
 author: nils
 externalLink: false
 ---
-After we have done the basic setup in the [last post](https://nils-braun.github.io/amazon-lambda-and-map/)
+After we have done the basic setup in the [last post](../amazon-lambda-and-map/)
 we are now ready to add some real data science application and fully use the parallelisation
 of Lambda. We will write a very simple map-framework for this.
 
 This is part three on my series on Amazon Lambda for Data Science. To see how this all
 comes together, we will develop a real-world data science applications in this blog post series over the
 next time.
+
+* [Introduction: Why you should use Amazon Lambda](../why-you-should-use-amazon-lambda)
+* [Part 2: Simple map framework for Amazon Lambda using zappa](../amazon-lambda-and-map/)
+* [Part 3: Data Science with Amazon Lambda](../amazon-lambda-and-map-2/)
+* [Part 4: Use the Power of Lambda](../amazon-lambda-and-map-3/)
 
 You can find the code of this series on my [github account](https://github.com/nils-braun/amazon-lambda-datascience) (will be updated when we go on).
 The version of this post is stored in tag *part-three*.
@@ -149,8 +154,8 @@ def feature_calculation(chunk):
     :param chunk: The id and the time series the sum will be calculated for.
     :return: A dict with the id and the result of the calculation.
     """
-    id, timeseries = chunk
-    return {"id": id, "result": timeseries.sum()}
+    series_id, timeseries = chunk
+    return {"id": series_id, "result": timeseries.sum()}
 {% endhighlight %}
 
 I think this part can already be understood without knowing, how the `my_map`
@@ -316,6 +321,7 @@ if __name__ == '__main__':
     s.close()
 
     print(result_df.head())
+
     print("The calculation took", end - start, "seconds")
 {% endhighlight %}
 
@@ -366,9 +372,57 @@ With that, you are ready to go and by changing the URL in your test script, you 
 and get the calculated features in return.
 
 Two things to note:
-* the first invocation may be really slow. Remember the cold and warm container thing from my [last post](https://nils-braun.github.io/amazpn-lambda-and-map/)?
+* the first invocation may be really slow. Remember the cold and warm container thing from my [last post](../amazon-lambda-and-map/)?
 * Also the later invocation may not be as fast as on your local machine. This is mainly because of streaming issues. We will discuss
   performance in a later post.
+
+
+### Python 2 - Python 3
+
+Well, this is a bit embarrassing: if you are using python 2, you probably run into the SSL problem
+mentioned in the post before: python 2 can not handle https correctly, so when changing the URL in your
+test script, the request will fail. But if you are using python 3, the script itself will fail because of
+`byte`/`str` things. Life is hard :-(
+
+Ok, two possibilities here: you use python 3 to invoke your script, but then you need a slightly updated version of it:
+
+{% highlight python %}
+from __future__ import print_function
+import requests
+import pandas as pd
+from io import BytesIO, StringIO
+from time import time
+
+if __name__ == '__main__':
+
+    df = pd.read_csv("data.csv")
+    start = time()
+    url = "http://localhost:5000" # fill in your AWS URL here (do not forget the dev)
+    with StringIO() as stream:
+        df.to_csv(stream)
+        stream.seek(0)
+
+        with BytesIO() as bstream:
+            bstream.write(stream.read().encode())
+            bstream.seek(0)
+            answer = requests.put(url, data=bstream,
+                                  params={"chunksize": "10", "id_column": "id", "value_column": "value"})
+
+    end = time()
+    s = StringIO()
+    s.write(answer.text)
+    s.seek(0)
+    result_df = pd.read_csv(s, index_col="id")
+    s.close()
+
+    print(result_df.head())
+
+    print("The calculation took", end - start, "seconds")
+{% endhighlight %}
+
+I have added this script as `test3.py` in the github repository.
+
+Or you use Python 3.6 right from the beginning, which is supported by Amazon Lambda.
 
 ## What to do next?
 We will finally add the Lambda invocation in the next post - which is quite easy now as we have everything around. We will

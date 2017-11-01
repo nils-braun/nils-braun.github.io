@@ -19,7 +19,12 @@ This is part two on my series on Amazon Lambda for Data Science. To see how this
 comes together, we will develop a real-world data science applications in this blog post series over the
 next time.
 
-If you have read the [last post](https://nils-braun.github.io//why-you-should-use-amazon-lambda/) in this series,
+* [Introduction: Why you should use Amazon Lambda](../why-you-should-use-amazon-lambda)
+* [Part 2: Simple map framework for Amazon Lambda using zappa](../amazon-lambda-and-map/)
+* [Part 3: Data Science with Amazon Lambda](../amazon-lambda-and-map-2/)
+* [Part 4: Use the Power of Lambda](../amazon-lambda-and-map-3/)
+
+If you have read the [last post](why-you-should-use-amazon-lambda/) in this series,
 you are now (hopefully) convinced, that Amazon Lambda helps you develop your data science application
 quickly and inexpensively. There is plenty of material and tutorials out there in the web on how to
 start with developing. However, because there is plenty of things you can do with Lambdas, it is easy
@@ -76,7 +81,7 @@ on how to create a new AWS account and configure the AWS CLI.
 If you do not understand all terms in the manual, do not worry. I will try to explain every concept you will need in this tutorial.
 
 Two things you have to keep in mind when following the tutorial:
-* you have already created a virtual environment, so you might want to install `awscli` into this (by calling `pip install awscli` instead of `pip install aws --user`)
+* you have already created a virtual environment, so you might want to install `awscli` into this (by calling `pip install awscli` instead of `pip install awscli --user`)
 * In the following, I will assume that you have named your profile `default` instead of the `adminuser`, because it makes things a bit easier (although it is not needed) in some configurations.
 
 In the end, make sure that you can run `aws lambda list-functions` successfully.
