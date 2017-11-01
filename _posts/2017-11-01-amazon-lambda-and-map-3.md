@@ -1,7 +1,7 @@
 ---
 title: "Lambda IV: Use the Power of Lambda"
 layout: post
-date: 2017-09-02 20:00
+date: 2017-11-01 11:00
 tag: [datascience, python, lambda]
 image: /assets/images/lambda.png
 headerImage: true
