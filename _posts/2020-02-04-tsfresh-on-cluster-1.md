@@ -20,10 +20,10 @@ It comes in many flavours, sizes and complexities.
 Let's define some common properties of time series data:
 * The data is indexed by some discrete "time" variable.
   Often (but not necessarily) in fixed sampling intervals.
-  Not in all cases is the index actually the wall clock time -  measurements of the height profile of a produced semiconductor in a  plant might share many properties with a classical time series although  the index is the location on the sensor here.
-  To be general, we can call it the `sort` parameter* - but to keep things simple in the following we still talk about the time.
-* We assume there is a temporal dependency in the data - measurements at a certain timestamp are not just random, but depend (at least to a certain amount) on previous data points or on a underlying (maybe unknown) process.
-* You do not only have a single time series, but multiple distinct measurements.
+  The index does not need to be the wall clock time in all cases -  measurements of the height profile of a produced semiconductor in a  plant might share many properties with a classical time series although  the index is the location on the sensor here.
+  To be general, we can call it the `sort` parameter - but to keep things simple in the following we still talk about the time.
+* We assume there is a temporal dependency in the data - measurements at a certain timestamp are not just random, but depend (at least to a certain amount) on previous data points or on an underlying (maybe unknown) process.
+* It does not need to be a single time series, but can consist of multiple distinct measurements.
   For example you can analyse the stock market prices of Apple, Alphabet and Facebook - so you have three different time series.
   We will say in the following that each of those time series has a different identifier, or `id`.
   Usually, you are interested in the different behavior of the data for different `id`s.
@@ -31,7 +31,7 @@ Let's define some common properties of time series data:
   In our nomenclature, the different locations would be different `id`s and temperature and humidity are different `kind`s of the time series.
 
 Many tasks around time series involve the application of machine learning algorithms, e.g. to classify the collected data of different `id`s or to predict future values of the time series.
-But before an algorithm can deduce, if for example a measured heart rate shows first sign of a heart attack or a stock chart line indicates the next big thing, useful features of the time series need to be extracted.
+But before an algorithm can deduce, if for example a measured heart rate shows first signs of a heart attack or a stock chart line indicates the next big thing, useful features of the time series need to be extracted.
 Using these features, a machine learning algorithm can then learn to differentiate between signal and background data.
 
 Side note: in recent times there is a lot of effort put into time series analysis with deep learning methods.
@@ -46,7 +46,7 @@ And in the end, most of the features will not make it to the production machine 
 
 Therefore we invented [`tsfresh`](https://tsfresh.readthedocs.io/en/latest/) [^1], which is an automated feature extraction and selection library for time series data.
 It basically consists of a large library of feature calculators from different domains (which will extract more than 750 features for each time series) and a feature selection algorithm based on hypothesis testing.
-Today in this post series, we will only cover the feature extraction, as this is typically the (computationally) time consuming part.
+In todays post (which will be the first of two parts about feature extraction with large time series data), we will only cover the feature extraction, as this is typically the (computationally) time consuming part.
 The feature extractors range from simple ones like `min`, `max`, `length` to more complex ones like autocorrelation, fast Fourier transformation or augmented Dickey Fuller tests.
 You can find a list of all features [here](https://tsfresh.readthedocs.io/en/latest/text/list_of_features.html).
 
@@ -61,13 +61,13 @@ df_features = extract_features(df, column_id="id", column_sort="timestamp",
 
 The resulting `pandas` dataframe `df_features` will contain all extracted features for each time series `kind` and `id`.
 `tsfresh` understands multiple input dataframe schemas, which are described in detail [in the documentation](https://tsfresh.readthedocs.io/en/latest/text/data_formats.html).
-You can also control with features are extracted with the settings parameters (default is to extract all features from the library with sane default configuration).
+You can also control which features are extracted with the settings parameters (default is to extract all features from the library with sane default configuration).
 
 
 ## Challenge: Large Data Samples
 
 So far, so easy.
-But what happens of you not only have a bunch of time series, but multiple?
+But what happens if you not only have a bunch of time series, but multiple?
 Thousands, millions?
 
 The time spent on feature extraction scales linearly with the number of time series.
@@ -120,9 +120,9 @@ You can also turn multiprocessing off by setting `n_jobs` to 0.
 
 ## Distributors
 
-Using multiple instead of one core for the feature calculation is already better, but how can you increase the processing speed even more?
+Using multiple cores instead of one core for the feature calculation is already better, but how can you increase the processing speed even more?
 To distribute the calculation of the features to multiple machines, `tsfresh` gives you the possibility to define a *distributor*.
-The data is still loaded on your local machine (and required to be a `pandas` dataframe, we will release this constraint in the next post), but you can use a distributor to e.g. let the heavy lifting of the feature calculation be done one multiple machines.
+The data is still loaded on your local machine (and is required to be a `pandas` dataframe, we will release this constraint in the next post), but you can use a distributor to e.g. let the heavy lifting of the feature calculation be done on multiple machines.
 This has the benefit of speeding up your computation without the need to change anything on your usual data science pipeline.
 
 Distributors offer a very general framework for implementing your own way, how you want your calculation be shuffled on your cluster.
@@ -164,7 +164,7 @@ in another one.
 Use the printed scheduler address in your code.
 Now, you can scale your computation very easily by just adding more workers (or using one of the other possibilities to scale a `dask` cluster, e.g. via kubernetes, YARN, etc.)
 
-Distributing work with `dask` us just an example.
+Distributing work with `dask` is just an example.
 If you want to support your own distribution framework, you can create your own `Distributor` class and implement the job scheduling logic.
 Some documentation is available [here](https://tsfresh.readthedocs.io/en/latest/text/tsfresh_on_a_cluster.html).
 
