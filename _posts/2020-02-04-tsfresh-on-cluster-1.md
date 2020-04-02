@@ -55,8 +55,7 @@ To extract the full set of features, all you need to do is installing `tsfresh` 
 ```python
 from tsfresh import extract_features
 
-df_features = extract_features(df, column_id="id", column_sort="timestamp",
-                               column_kind="kind")
+df_features = extract_features(df, column_id="id", column_sort="time")
 ```
 
 The resulting `pandas` dataframe `df_features` will contain all extracted features for each time series `kind` and `id`.
