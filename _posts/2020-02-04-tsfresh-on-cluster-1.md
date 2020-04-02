@@ -17,7 +17,9 @@ Time Series data is everywhere today.
 From stock market trends to EEG measurements, from Industry 4.0 production lines to IoT sensors - temporarily annotated data hides in a lot of places.
 It comes in many flavours, sizes and complexities.
 
-Let's define some common properties of time series data:
+In this series of two posts we will explore how we can extract features from time series using `tsfresh` - even when the time series data is very large and the computation takes a very long time on a single core.
+
+But first, let's define some common properties of time series data:
 * The data is indexed by some discrete "time" variable.
   Often (but not necessarily) in fixed sampling intervals.
   The index does not need to be the wall clock time in all cases -  measurements of the height profile of a produced semiconductor in a  plant might share many properties with a classical time series although  the index is the location on the sensor here.
@@ -76,9 +78,9 @@ Well, or you read on! :-)
 In this series of two posts we are going to discuss four possibilities to speed up the calculation.
 Depending on the amount of data (and resources) you have, you can choose between:
 
-1. multiprocessing, if your data fits into a single machine but you want to leverage multiple cores for the calculation (this post).
+1. Multiprocessing, if your data fits into a single machine but you want to leverage multiple cores for the calculation (this post).
 2. `tsfresh`'s distributor framework, if your data still fits into a single machine but you want to distribute the feature calculation over multiple machines to speed up the calculation (this post).
-3. if your data does not fit into a single machine, chances are high you are already using libraries like `Apache Spark` or `dask` for handling the data (before `tsfresh`), so we will discuss how to interact from them with `tsfresh` ([next post](../tsfresh-on-cluster-2/)).
+3. If your data does not fit into a single machine, chances are high you are already using libraries like `Apache Spark` or `dask` for handling the data (before `tsfresh`), so we will discuss how to interact from them with `tsfresh` ([next post](../tsfresh-on-cluster-2/)).
 4. And if you are not using `dask` or `Apache Spark` and your data does still not fit into a single machine, you can still leverage the power of a task scheduler such as `luigi` for this ([next post](../tsfresh-on-cluster-2/)).
 
 If you want to follow along with the code examples, make sure to install the most recent version of `tsfresh` (the following was tested with v0.15.1).
@@ -89,6 +91,7 @@ To load it, add the following lines to your script:
 
 ```python
 from tsfresh.examples import robot_execution_failures
+
 robot_execution_failures.download_robot_execution_failures()
 df, target = robot_execution_failures.load_robot_execution_failures()
 ```

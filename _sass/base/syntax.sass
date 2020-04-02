@@ -1,133 +1,173 @@
-/*
- * GitHub style for Pygments syntax highlighter, for use with Jekyll
- * Courtesy of GitHub.com
- */
-.highlight
-  code, pre
-    color: #fdce93
-    background-color: #3f3f3f
+code.highlighter-rouge
+  border:  solid 1px #e1e4e5
+  font-weight: bold
+  padding: 2px 5px
 
-  .hll
-    background-color: #222
+pre.highlight
+  padding: 10pt
+
+.highlight
+  code, pre, .hll
+    background-color: #404040
+
+  code
+    color: #ffffff
+
+  .c
+    color: #999999
+    font-style: italic
 
   .err
-    color: #e37170
-    background-color: #3d3535
+    color: #a61717
+    background-color: #e3d2d2
+
+  .g
+    color: #d0d0d0
 
   .k
-    color: #f0dfaf
+    color: #6ab825
+    font-weight: bold
 
-  .p
-    color: #41706f
+  .l, .n, .o, .x, .p
+    color: #ffffff
+
+  .cm
+    color: #999999
+    font-style: italic
+
+  .cp
+    color: #cd2828
+    font-weight: bold
+
+  .c1
+    color: #999999
+    font-style: italic
 
   .cs
-    color: #cd0000
-    font-weight: 700
+    color: #e50808
+    font-weight: bold
+    background-color: #520000
 
   .gd
-    color: #cd0000
+    color: #d22323
 
   .ge
-    color: #ccc
+    color: #d0d0d0
     font-style: italic
 
   .gr
-    color: red
+    color: #d22323
+
+  .gh
+    color: #ffffff
+    font-weight: bold
+
+  .gi
+    color: #589819
 
   .go
-    color: gray
+    color: #ffffff
+
+  .gp
+    color: #aaaaaa
 
   .gs
-    color: #ccc
-    font-weight: 700
+    color: #d0d0d0
+    font-weight: bold
 
   .gu
-    color: purple
-    font-weight: 700
+    color: #ffffff
+    text-decoration: underline
 
   .gt
-    color: #0040D0
+    color: #d22323
 
-  .kc
-    color: #dca3a3
-
-  .kd
-    color: #ffff86
-
-  .kn
-    color: #dfaf8f
-    font-weight: 700
+  .kc, .kd, .kn
+    color: #6ab825
+    font-weight: bold
 
   .kp
-    color: #cdcf99
+    color: #6ab825
 
-  .kr
-    color: #cdcd00
+  .kr, .kt
+    color: #6ab825
+    font-weight: bold
+
+  .ld
+    color: #d0d0d0
+
+  .m
+    color: #3677a9
+
+  .s
+    color: #ed9d13
+
+  .na
+    color: #bbbbbb
+
+  .nb
+    color: #24909d
+
+  .nc
+    color: #447fcf
+    text-decoration: underline
+
+  .no
+    color: #40ffff
+
+  .nd
+    color: #ffa500
 
   .ni
-    color: #c28182
+    color: #d0d0d0
 
   .ne
-    color: #c3bf9f
-    font-weight: 700
+    color: #bbbbbb
+
+  .nf
+    color: #447fcf
+
+  .nl
+    color: #d0d0d0
 
   .nn
-    color: #8fbede
+    color: #447fcf
+    text-decoration: underline
 
-  .vi
-    color: #ffffc7
+  .nx, .py
+    color: #d0d0d0
 
-  .c
-    color: #7f9f7f
+  .nt
+    color: #6ab825
+    font-weight: bold
 
-.preview-zenburn .highlight
-  .g, .cm, .cp, .c1
-    color: #7f9f7f
+  .nv
+    color: #40ffff
 
-.highlight .l
-  color: #ccc
+  .ow
+    color: #6ab825
+    font-weight: bold
 
-.preview-zenburn .highlight
-  .x, .no, .nd, .nl, .nx, .py, .w
-    color: #ccc
+  .w
+    color: #666666
 
-.highlight .n
-  color: #dcdccc
+  .mf, .mh, .mi, .mo
+    color: #3677a9
 
-.preview-zenburn .highlight
-  .nv, .vg
-    color: #dcdccc
+  .sb, .sc, .sd, .s2, .se, .sh, .si
+    color: #ed9d13
 
-.highlight .o, .preview-zenburn .highlight .ow
-  color: #f0efd0
+  .sx
+    color: #ffa500
 
-.highlight .gh, .preview-zenburn .highlight .gp
-  color: #dcdccc
-  font-weight: 700
+  .sr, .s1, .ss
+    color: #ed9d13
 
-.highlight .gi, .preview-zenburn .highlight .kt
-  color: #00cd00
+  .bp
+    color: #24909d
 
-.highlight .ld
-  color: #cc9393
+  .vc, .vg, .vi
+    color: #40ffff
 
-.preview-zenburn .highlight
-  .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss
-    color: #cc9393
-
-.highlight .m
-  color: #8cd0d3
-
-.preview-zenburn .highlight
-  .mf, .mh, .mi, .mo, .il
-    color: #8cd0d3
-
-.highlight .na, .preview-zenburn .highlight .nt
-  color: #9ac39f
-
-.highlight .nb
-  color: #efef8f
-
-.preview-zenburn .highlight
-  .nc, .nf, .bp, .vc
-    color: #efef8f
+  .il
+    color: #3677a9
