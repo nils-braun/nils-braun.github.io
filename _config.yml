@@ -1,9 +1,9 @@
 # main text of home
 name: Nils Braun
-bio: high energy data science
+bio: high energy data engineer
 
 # twitter summary info
-description: A blog on software development, data science and high energy physics
+description: A blog on software development, data engineering and high energy physics
 
 # if it's an external image, update below to true
 # better with square images
@@ -29,7 +29,7 @@ analytics-google: 'UA-103787925-1'
 # if you don't want comments in your posts, leave categories empty
 disqus:
   shortname: https-nils-braun-github-io # enter this from your disqus account
-  categories: [blog] # only show disqus for posts that have these categories
+  categories: [] # only show disqus for posts that have these categories
 
 # if you don't have any of social below, comment the line
 facebook: nilslennartbraun
@@ -53,7 +53,7 @@ email: nilslennartbraun@gmail.com
 authors:
     nils:
         name: Nils Braun
-        bio: high energy data scientist
+        bio: high energy data engineer
         external-image: false
         picture: assets/images/profile.jpg
 
@@ -91,7 +91,7 @@ show-author: true
 # do you want some animations?
 animation: true
 
-gems:
+plugins:
   - jekyll-seo-tag
   - jekyll-gist
   - jekyll-feed
