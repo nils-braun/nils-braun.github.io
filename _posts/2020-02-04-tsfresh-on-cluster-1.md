@@ -34,7 +34,7 @@ Many tasks around time series involve the application of machine learning algori
 But before an algorithm can deduce, if for example a measured heart rate shows first signs of a heart attack or a stock chart line indicates the next big thing, useful features of the time series need to be extracted.
 Using these features, a machine learning algorithm can then learn to differentiate between signal and background data.
 
-Side note: in recent times there is a lot of effort put into time series analysis with deep learning methods.
+Side note: in recent times a lot of effort has been put into time series analysis with deep learning methods.
 While this approach has definitely its benefits, it is only applicable for a certain range of problems.
 There exist a lot of documentation on how to use deep learning with time series data (e.g. [here](https://towardsdatascience.com/time-series-analysis-with-deep-learning-simplified-5c444315d773)) so we will not cover it in this post.
 
@@ -60,7 +60,7 @@ df_features = extract_features(df, column_id="id", column_sort="time")
 
 The resulting `pandas` dataframe `df_features` will contain all extracted features for each time series `kind` and `id`.
 `tsfresh` understands multiple input dataframe schemas, which are described in detail [in the documentation](https://tsfresh.readthedocs.io/en/latest/text/data_formats.html).
-You can also control which features are extracted with the settings parameters (default is to extract all features from the library with sane default configuration).
+You can also control which features are extracted with the settings parameters (default is to extract all features from the library with reasonable default configuration).
 
 
 ## Challenge: Large Data Samples
@@ -72,7 +72,7 @@ Thousands, millions?
 The time spent on feature extraction scales linearly with the number of time series.
 If you have gigabytes of time series, you should better grab another cup of coffee!
 
-Well, or you read on :-)
+Well, or you read on! :-)
 In this series of two posts we are going to discuss four possibilities to speed up the calculation.
 Depending on the amount of data (and resources) you have, you can choose between:
 
@@ -81,7 +81,7 @@ Depending on the amount of data (and resources) you have, you can choose between
 3. if your data does not fit into a single machine, chances are high you are already using libraries like `Apache Spark` or `dask` for handling the data (before `tsfresh`), so we will discuss how to interact from them with `tsfresh` ([next post](../tsfresh-on-cluster-2/)).
 4. And if you are not using `dask` or `Apache Spark` and your data does still not fit into a single machine, you can still leverage the power of a task scheduler such as `luigi` for this ([next post](../tsfresh-on-cluster-2/)).
 
-If you want to follow along with the code examples, make sure to install the most recent version of `tsfresh`.
+If you want to follow along with the code examples, make sure to install the most recent version of `tsfresh` (the following was tested with v0.15.1).
 You also need an example data set for testing.
 `tsfresh` comes with multiple example data, so let's choose one of it: the robot failure time series data.
 You can learn more on the data sample from the [UCI page](http://archive.ics.uci.edu/ml/datasets/Robot+Execution+Failures).
@@ -106,7 +106,7 @@ The results are collected in the end and combined into a large dataframe.
 
 You can control the multiprocessing behavior with parameters passed to `extract_features`:
 * `n_jobs`: how many jobs to run in parallel (defaults to all your CPUs)
-* `chunksize`: on how many time series "chunks" (one combination of `id` and `kind`) to extract the features in one job.
+* `chunksize`: how many "chunks" of time series (a chunk is one combination of `id` and `kind`) a single job should extract the features
 
 Especially the chunksize has a large potential for optimizations.
 By default, it is chosen according to a heuristic which worked best in our tests - use it to balance between parallelism speedup and introduced overhead.
@@ -161,7 +161,9 @@ Registered to:    <dask-master>
 
 in another one.
 Use the printed scheduler address in your code.
-Now, you can scale your computation very easily by just adding more workers (or using one of the other possibilities to scale a `dask` cluster, e.g. via kubernetes, YARN, etc.)
+Now, you can scale your computation very easily by just adding more workers (or using one of the other possibilities to scale a `dask` cluster, e.g. via kubernetes, YARN, etc.).
+Please note that by default only a single CPU is used per worker.
+If you want to run on more processes on each machine, use the `--nprocs` command line option when starting each worker.
 
 Distributing work with `dask` is just an example.
 If you want to support your own distribution framework, you can create your own `Distributor` class and implement the job scheduling logic.
@@ -175,5 +177,7 @@ The clear benefit of using these possibilities: no need to change the rest of yo
 You start and end with `pandas` dataframes and you still read in the data on your local machine - it basically looks like you would do your feature extraction on just a small sample.
 
 In the [next post](../tsfresh-on-cluster-2/) we will go one step further: what happens if you need to distribute the data because it does not fit into a single machine?
+
+Thanks to [@dotcsDE](https://twitter.com/dotcsDE) and [snwalther](https://twitter.com/snwalther) for reviewing this post!
 
 [^1]: *Time Series FeatuRe Extraction on basis of Scalable Hypothesis tests (tsfresh - A Python package)*; Maximilian Christ, Nils Braun, Julius Neuffer, Andreas W. Kempa-Liehr; Neurocomputing 2018: DOI: [10.1016/j.neucom.2018.03.067](https://www.researchgate.net/deref/http%3A%2F%2Fdx.doi.org%2F10.1016%2Fj.neucom.2018.03.067?_sg%5B0%5D=tBc7DaUqEurrQ0vQZEv588MgNUdcIuBQFVnzpFU3SEDJQ01kEieoWsciCt1VcXq5dC5rcFgdWpjv8SbgnozIsU7vxQ.1zdUmVbdlNSY8cet2FDuNx6J-R-hq7vSi_R3xdciVwtgtPyQTEPQLVAHwOOcgqrKz85i_DQexYFCsWiVj1RGpg)
