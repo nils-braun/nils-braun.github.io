@@ -124,6 +124,7 @@ root
 This is the format of the robot data.
 `id` is the identifier for each time series, `time` is the time (sorting) parameter and the `F_*` and `T_*` are the different value series (remember: what we call the `kind` of the time series).
 Please note that this data format and the pre-processing we will perform in the following is just an example - your data might look differently and other data transformation steps might be necessary.
+For example if your column names are different (e.g. the `id` column is not called "id"), you will need to edit the steps accordingly.
 
 The feature extraction will later run on each of these series separately - so we first need to group it both by the timeseries identifier `id` and the `kind`.
 However, the data is not easily groupable by `kind` (data of the same kind are not separated) - so we first need to reshape the data.
@@ -172,6 +173,8 @@ each grouped chunk of data only contains the data of one `kind` and one `id`.
 We are now ready to use `tsfresh`!
 The preprocessing part might look different for your data sample,
 but you should always end up with a dataset grouped by `id` and `kind` before using `tsfresh`.
+
+With the given column names in the example, the call to `tsfresh` looks like this:
 
 ```
 >>> from tsfresh.convenience.bindings import spark_feature_extraction_on_chunk
