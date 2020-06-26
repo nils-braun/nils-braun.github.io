@@ -4,7 +4,7 @@ layout: post
 date: 2020-06-26 8:00
 tag: [typescript, github]
 image: /assets/images/github.png
-headerImage: true
+headerImage: false
 projects: false
 hidden: false
 description: ""
@@ -13,7 +13,12 @@ author: nils
 externalLink: false
 ---
 
+We will build a small GitHub action with TypeScript in this post!
+
+## Introduction
+
 GitHub actions is the new CI/CD tool and it comes with some very nice benefits: simple workflow file syntax, good documentation, very nice integration with GitHub (obviously) and, most importantly, the possibility to write and share single action tasks easily.
+
 There exist a large [marketplace](https://github.com/marketplace?type=actions) of community-written actions, but even if you do not find what you are looking for: it is very easy to [write](https://help.github.com/en/actions) your own.
 In this blog post, we will walk through the process of writing, testing and publishing a simple GitHub action written in TypeScript from scratch.
 Its task will be to read in two JSON documents (coming from previous tasks), comparing them and commenting on a pull request with a markdown table of this comparison.
@@ -34,8 +39,8 @@ We will assume the JSON file to be in a very simple format
 
 ```json
 {
-    "key1": value1,
-    "key2": value2,
+    "key1": 1,
+    "key2": 2,
 }
 ```
 
@@ -148,7 +153,7 @@ jobs:
       - name: Download benchmark artifact
         uses: dawidd6/action-download-artifact@v2
         with:
-          # The ${{ }} is the way in github actions to
+          # The ${ } is the way in github actions to
           # specify variables.
           # See here: https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions
           # github is a predefined variable, which
