@@ -1,6 +1,6 @@
 # main text of home
 name: Nils Braun
-bio: high energy data engineer
+bio: Python Enthusiast and Data Engineer
 
 # twitter summary info
 description: A blog on software development, data engineering and high energy physics
@@ -53,7 +53,7 @@ email: nilslennartbraun@gmail.com
 authors:
     nils:
         name: Nils Braun
-        bio: high energy data engineer
+        bio: Data Engineering Trainer, (Former) High Energy Physicist, Python Enthusiast, Coder, tsfresh Core Developer
         external-image: false
         picture: assets/images/profile.jpg
 
