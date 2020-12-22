@@ -235,7 +235,7 @@ will get exactly the same environment as you have - so you should make sure to c
 Our goal is to produce a single javascript file, where all dependencies are merged into a single file for GitHub to use.
 As we start with a typescript file, there are two steps you need to do:
 1. Translate the TypeScript file to plain javascript. This is done by the `typescript` package.
-2. Merge all production dependencies and the javascript code into a large javascript file. This is done by the `zeit/ncc` package.
+2. Merge all production dependencies and the javascript code into a large javascript file. This is done by the `vercel/ncc` package.
 As we do not want to remember how to run these two steps all the time, we define a build alias. In the `package.json` add two entries in `scripts`:
 
 ```json
