@@ -26,7 +26,7 @@ I used a similar application for [my](https://github.com/nils-braun/pytest-bench
 
 ## Preparation
 
-Github actions let you define one (or multiple) [workflow yaml-files](](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions) stored in `.github/workflow` in your GitHub repository.
+Github actions let you define one (or multiple) [workflow yaml-files](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions) stored in `.github/workflow` in your GitHub repository.
 In these files, you can define [when a workflow should run](https://help.github.com/en/actions/reference/events-that-trigger-workflows) (e.g. when a pull request is created, when a release is done, when a push to your default branch happened etc.) and which tasks should be processed.
 These tasks are the meat of the workflows and can be controlled via parameters from the workflow file.
 They can either be defined as a reference of another GitHub repository containing the task code or a docker image.
