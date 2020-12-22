@@ -218,7 +218,7 @@ We will now install multiple dependencies via `npm`.
 The cool thing is, that `npm` can automatically store the dependencies into the `package.json` file, so it be perfectly reproducible.
 
     npm install --save-prod @actions/github @actions/core
-    npm install --save-dev @zeit/ncc typescript prettier
+    npm install --save-dev @vercel/ncc typescript prettier
 
 The dependencies are now installed into the folder `node_modules` (which you should not add to git).
 We will cover later, what these packages actually do.
