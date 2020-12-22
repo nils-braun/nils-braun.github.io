@@ -371,7 +371,7 @@ Now to the build
 
 and start the application locally on your computer
 
-    nodejs dist/index.js
+    node dist/index.js
 
 This should print
 
