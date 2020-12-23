@@ -26,7 +26,7 @@ I used a similar application for [my](https://github.com/nils-braun/pytest-bench
 
 ## Preparation
 
-Github actions let you define one (or multiple) [workflow yaml-files](](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions) stored in `.github/workflow` in your GitHub repository.
+Github actions let you define one (or multiple) [workflow yaml-files](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions) stored in `.github/workflow` in your GitHub repository.
 In these files, you can define [when a workflow should run](https://help.github.com/en/actions/reference/events-that-trigger-workflows) (e.g. when a pull request is created, when a release is done, when a push to your default branch happened etc.) and which tasks should be processed.
 These tasks are the meat of the workflows and can be controlled via parameters from the workflow file.
 They can either be defined as a reference of another GitHub repository containing the task code or a docker image.
@@ -218,7 +218,7 @@ We will now install multiple dependencies via `npm`.
 The cool thing is, that `npm` can automatically store the dependencies into the `package.json` file, so it be perfectly reproducible.
 
     npm install --save-prod @actions/github @actions/core
-    npm install --save-dev @zeit/ncc typescript prettier
+    npm install --save-dev @vercel/ncc typescript prettier
 
 The dependencies are now installed into the folder `node_modules` (which you should not add to git).
 We will cover later, what these packages actually do.
@@ -235,7 +235,7 @@ will get exactly the same environment as you have - so you should make sure to c
 Our goal is to produce a single javascript file, where all dependencies are merged into a single file for GitHub to use.
 As we start with a typescript file, there are two steps you need to do:
 1. Translate the TypeScript file to plain javascript. This is done by the `typescript` package.
-2. Merge all production dependencies and the javascript code into a large javascript file. This is done by the `zeit/ncc` package.
+2. Merge all production dependencies and the javascript code into a large javascript file. This is done by the `vercel/ncc` package.
 As we do not want to remember how to run these two steps all the time, we define a build alias. In the `package.json` add two entries in `scripts`:
 
 ```json
@@ -371,7 +371,7 @@ Now to the build
 
 and start the application locally on your computer
 
-    nodejs dist/index.js
+    node dist/index.js
 
 This should print
 
